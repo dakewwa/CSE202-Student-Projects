@@ -1,0 +1,70 @@
+#implementing higher-order functions in python (map,filter,reduce,compose,find)
+
+#MAP
+def map(func, lst):
+    return [func(x) for x in lst]
+#let us show the example, where you have a list and by using map function you want to elevate each element from the list to the second power.
+def square(x):
+    return x**2
+
+lst = [5, 7, 9]
+result = map(square, lst)
+print(result)
+
+
+#FILTER
+def filter(pred, lst):
+    return [x for x in lst if pred(x)]
+#for example if you have a list of numbers and you want to filter out only even numbers:
+numbers = [22, 1, 7, 10, 5, 6]
+evens = filter(lambda x: x % 2 == 0, numbers)
+print(evens)  
+
+
+#REDUCE
+def reduce(op, lst, initial=None):
+    if initial is None:
+        acc = lst[0]
+        for x in lst[1:]:
+            acc = op(acc, x)
+    else:
+        acc = initial
+        for x in lst:
+            acc = op(acc, x)
+    return acc
+#there are three arguments :op, lst, initial. The function op returns a result after accepting two inputs. A list of elements to reduce is called lst.
+#The accumulator's initial value is specified by the optional argument initial. The first element of lst is utilized as the initial value of the accumulator if initial is not specified.
+
+
+#COMPOSE
+def compose(f, g):
+    return lambda x: g(f(x))
+#compose function applies the two functions f and g on the output of g and returns a new function. The function that is returned is a lambda function that only accepts the input x.
+def add_one(x):
+    return x + 1
+
+def square(x):
+    return x * x
+
+#defining a new function that squares a number and adds 1 to the result
+square_and_add_one = compose(add_one, square)
+#test
+result = square_and_add_one(5)
+print(result)  
+#output: 26
+#In this example, we define the two straightforward functions square and add_one. 
+#The compose function is then used to create the new function square_and_add_one, which applies square to the input and add_one to the output. 
+#Finally, we use an input of 3 to test the new function and display the anticipated outcome of 10.
+
+#FIND
+def find(pred, lst):
+    for x in lst:
+        if pred(x):
+            return x
+    return None
+#for example we can use the find function to find the first ven number in the list 
+lst = [1, 5, 7, 2, 4, 6]
+result = find(lambda x: x % 2 == 0, lst)
+print(result) 
+#output: 2
+
