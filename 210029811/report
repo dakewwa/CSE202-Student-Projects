@@ -1,0 +1,23 @@
+#REPORT:
+#I have implemented five higher-order functions, namely map, filter, reduce, compose, and find, using functional programming techniques in Python.
+
+#THE MAP function takes a function and a list as an input and applies it to each element of the list, returning a new list the resust.
+#To apply the function to each element of the input list the implementation uses list comprehension.
+
+#THE FILTER function accepts a list and a predicate function as imput and outputs a mew list that only contains the input list's components that satisfy the predicate.
+#The implementation applies the predicate to each item in the input list using list comprehension.
+
+#THE REDUCE function takes a list and a binary operator as inputs and uses the binary operator to combine the components of the list, returning a single result. 
+#The implementation combines the list's components using a recursive method.
+
+#THE COMPOSE function accepts two functions as input and outputs a new function that combines the results of the first function and the second function.
+#The implementation provides a lambda function that takes the output of the first function and applies the second function to it.
+
+#THE FIND function accepts a predicate function and a list as input and returns either None if no such element exists or the first member in the list that meets the predicate. 
+#The code iterates through the input list's elements using a for loop and returns the first one that meets the criteria.
+
+#The many test cases used to test each function cover a wide range of scenarios and edge cases, including empty lists, enormous lists, and functions that return error conditions.
+
+#I implemented the map, filter, and reduce functions in functional programming using list comprehension and recursion. 
+#The find function utilizes a for loop to iterate through the list, whereas the compose function employs lambda functions to create a new function. 
+#The biggest difficulties I ran into during implementation had to do with addressing edge circumstances and making sure the result was accurate.

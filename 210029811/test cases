@@ -1,0 +1,30 @@
+#test cases
+from functools import reduce
+from msilib.schema import Component
+
+
+def test_map():
+    assert map(lambda x: x * 2, [1, 2, 3]) == [2, 4, 6]
+    assert map(lambda x: x.upper(), ['hello', 'teacher']) == ['HELLO', 'TEACHER']
+    assert map(lambda x: x[0], [('apple', 'strawberry'), ('banana', 'watermelon')]) == ['apple', 'banana']
+    assert map(lambda x: x ** 2, []) == []
+
+def test_filter():
+    assert filter(lambda x: x % 2 == 0, [1, 2, 3, 4, 5, 6]) == [2, 4, 6]
+    assert filter(lambda x: x.isupper(), ['Hello', 'WORLD', 'foo', 'BAR']) == ['WORLD', 'BAR']
+    assert filter(lambda x: len(x) == 3, ['foo', 'bar', 'baz']) == ['foo', 'bar']
+    assert filter(lambda x: x > 10, []) == []
+
+def test_reduce():
+    assert reduce(lambda x, y: x + y, [1, 2, 3, 4, 5]) == 15
+    assert reduce(lambda x, y: x * y, [1, 2, 3, 4, 5]) == 120
+    assert reduce(lambda x, y: x + y, [1, 2, 3, 4, 5], 10) == 25
+    assert reduce(lambda x, y: x * y, [], 10) == 10
+
+def compose(f, g):
+    return lambda x: g(f(x))
+def test_compose():
+    f = lambda x: x * 2
+    g = lambda x: x + 1
+    assert compose(f, g)(10) == 21
+    assert compose(g, f)(10) == 23
